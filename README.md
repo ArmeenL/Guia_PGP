@@ -9,17 +9,20 @@ Com o PGP (Pretty Good Privacy), você pode:
 
 Este guia contém comandos essenciais e boas práticas de PGP.
 
-## 📘 Índice:
+### 📘 Índice:
 
 - 🔐 Comandos PGP Essenciais
 - 💾 Backup Seguro
 - 🧰 Restauração de Backup
 
+---
 
 ## 🔐 Comandos PGP Essenciais
 É um desafio decorar todos os comandos do GPG, então aqui vai um resumo prático:
 
 ### 📌 Criar e Gerenciar Chaves
+
+```bash
 
 #Gerar um novo par de chaves PGP:
 gpg --full-generate-key
@@ -71,7 +74,12 @@ gpg --sign arquivo.txt
 #Verificar assinatura de um arquivo:
 gpg --verify arquivo.txt.gpg
 
+```
+---
+
 ### 💾 Backup Seguro
+
+```bash
 
 Se perder sua chave privada, você perde acesso a todos os seus dados criptografados. Por isso, é de extrema importância ter um sistema de backup.
 
@@ -92,7 +100,12 @@ shred -u pgp-backup.tar
 
 #Mover o arquivo pgp-backup.tar.gpg para um pendrive.
 
+```
+---
+
 ### 🧰 Restauração de Backup
+
+```bash
 
 Para restaurar seu backup em outro sistema (ou após perda de dados):
 
@@ -106,3 +119,4 @@ tar -xf pgp-backup.tar
 gpg --import private.asc
 gpg --import public.asc
 gpg --import revocation.crt (opcional: se quiser revogar)
+```
