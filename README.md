@@ -36,6 +36,8 @@ gpg --list-secret-keys
 #Ver o ID e a impressão digital das chaves:
 gpg --fingerprint
 
+---
+
 ### 📤 Exportar / Importar Chaves
 
 #Exportar sua chave pública:
@@ -46,6 +48,8 @@ gpg --import chave-pub.txt
 
 #Exportar sua chave privada (⚠️ NÃO COMPARTILHE!):
 gpg --export-secret-keys -a <SEU_ID> > minha-chave-privada.asc
+
+---
 
 ### 🚫 Revogar uma Chave
 
@@ -58,6 +62,8 @@ gpg --import revocation.crt
 #Enviar chave (ou revogação) para servidor público:
 gpg --send-keys <SEU_ID>
 
+---
+
 ### ✉️ Criptografar / Descriptografar Mensagens
 
 #Criptografar mensagem (precisa da chave pública do destinatário):
@@ -65,6 +71,8 @@ gpg -e -r <ID_DESTINATARIO> mensagem.txt
 
 #Descriptografar mensagem:
 gpg -d mensagem.txt.gpg
+
+---
 
 ### 🖊️ Assinar e Verificar Arquivos
 
@@ -79,7 +87,6 @@ gpg --verify arquivo.txt.gpg
 
 ### 💾 Backup Seguro
 
-```bash
 
 Se perder sua chave privada, você perde acesso a todos os seus dados criptografados. Por isso, é de extrema importância ter um sistema de backup.
 
@@ -88,6 +95,8 @@ Por segurança, armazene tudo em um dispositivo offline como um pendrive.
 Passo-a-passo:
 Exporte suas chaves e certificado para uma pasta chamada backup
 (Ela deve conter: chave pública, chave privada e revocation.crt)
+
+```bash
 
 #Empacotar tudo:
 tar -cf pgp-backup.tar backup
@@ -105,9 +114,10 @@ shred -u pgp-backup.tar
 
 ### 🧰 Restauração de Backup
 
-```bash
 
 Para restaurar seu backup em outro sistema (ou após perda de dados):
+
+```bash
 
 #Descriptografar o arquivo:
 gpg -d pgp-backup.tar.gpg > pgp-backup.tar
